@@ -6,13 +6,13 @@ class StorageInfoCard extends StatelessWidget {
   const StorageInfoCard({
     Key? key,
     required this.title,
-    required this.icon,
+    required this.dateInput,
     required this.amountOfFiles,
     required this.numberOfFiles,
   }) : super(key: key);
 
   final String title;
-  final String icon;
+  final DateTime dateInput;
   final String amountOfFiles;
   final int numberOfFiles;
 
@@ -31,11 +31,6 @@ class StorageInfoCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          SizedBox(
-            height: 20,
-            width: 20,
-            child: SvgPicture.asset(icon),
-          ),
           Expanded(
             child: Padding(
               padding:
@@ -46,19 +41,27 @@ class StorageInfoCard extends StatelessWidget {
                   Text(
                     title,
                     maxLines: 1,
+                    style: Theme.of(context).textTheme.caption!.copyWith(
+                          color: AppColors.black.withOpacity(0.7),
+                        ),
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(
                     "$numberOfFiles Files",
                     style: Theme.of(context).textTheme.caption!.copyWith(
-                          color: AppColors.white.withOpacity(0.7),
+                          color: AppColors.black.withOpacity(0.7),
                         ),
                   )
                 ],
               ),
             ),
           ),
-          Text(amountOfFiles),
+          Text(
+            amountOfFiles,
+            style: Theme.of(context).textTheme.caption!.copyWith(
+                  color: AppColors.black.withOpacity(0.7),
+                ),
+          ),
         ],
       ),
     );

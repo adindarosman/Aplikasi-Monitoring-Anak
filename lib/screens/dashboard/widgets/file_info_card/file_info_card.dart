@@ -10,71 +10,52 @@ class FileInfoCard extends StatelessWidget {
     required this.info,
   }) : super(key: key);
 
-  final CloudStorageInfo info;
+  final InfoAnakDash info;
 
   @override
   Widget build(BuildContext context) {
     AppSizes sizes = AppSizes(context);
     return Container(
-      padding: sizes.defaultPadding,
+      padding: EdgeInsets.all(4.0),
       decoration: BoxDecoration(
-        color: AppColors.secondaryColor,
+        color: AppColors.white,
         borderRadius: sizes.defaultBorderRadius,
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: ListView(
+        // Gunakan ListView sebagai parent
+        shrinkWrap: true,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                padding: EdgeInsets.all(sizes.defaultPaddingValue * 0.75),
-                height: 40,
-                width: 40,
-                decoration: BoxDecoration(
-                  color: info.color.withOpacity(0.3),
-                  borderRadius: sizes.defaultBorderRadius,
+              Text(
+                info.title,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: AppColors.black,
+                  fontWeight: FontWeight.bold,
                 ),
-                child: SvgPicture.asset(
-                  info.svgSrc,
-                  color: info.color,
-                ),
+                maxLines: 3,
+                softWrap: true,
               ),
-              Icon(
-                Icons.more_vert,
-                color: AppColors.white.withOpacity(0.54),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "${info.beratBadan ?? ''}"
+                    "${info.tinggiBadan ?? ''}"
+                    "${info.lingkarKpl ?? ''}"
+                    "${info.lingkarLgn ?? ''}",
+                    style: Theme.of(context)
+                        .textTheme
+                        .caption!
+                        .copyWith(color: AppColors.black.withOpacity(0.7)),
+                  ),
+                ],
               )
             ],
           ),
-          Text(
-            info.title,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-          StorageUsageBar(
-            color: info.color,
-            percentage: info.percentage,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "${info.numOfFiels} Files",
-                style: Theme.of(context)
-                    .textTheme
-                    .caption!
-                    .copyWith(color: AppColors.white.withOpacity(0.7)),
-              ),
-              Text(
-                info.totalStorage,
-                style: Theme.of(context)
-                    .textTheme
-                    .caption!
-                    .copyWith(color: AppColors.white),
-              ),
-            ],
-          )
         ],
       ),
     );

@@ -1,9 +1,10 @@
 import 'package:dashboardtemplate/controllers/MenuController.dart';
 import 'package:dashboardtemplate/core/core.dart';
-import 'package:dashboardtemplate/screens/main/main_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../screens/main/main_screen.dart';
 
 class AppWidget extends StatefulWidget {
   @override
@@ -36,7 +37,8 @@ class _AppWidgetState extends State<AppWidget> {
         canvasColor: AppColors.secondaryColor,
       ),
       home: MultiProvider(providers: [
-        ChangeNotifierProvider(create: (context) => MenuController())
+        ChangeNotifierProvider<CustomMenuController>(
+            create: (context) => CustomMenuController())
       ], child: MainScreen()),
     );
   }

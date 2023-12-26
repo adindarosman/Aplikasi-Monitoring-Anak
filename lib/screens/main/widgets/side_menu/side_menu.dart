@@ -1,6 +1,16 @@
+import 'package:dashboardtemplate/controllers/MenuController.dart';
 import 'package:dashboardtemplate/core/core.dart';
+import 'package:dashboardtemplate/screens/artikel/artikel_screen.dart';
+import 'package:dashboardtemplate/screens/buku_anak/3bulan_screen.dart';
+import 'package:dashboardtemplate/screens/konsultasi/konsultasi_screen.dart';
+import 'package:dashboardtemplate/screens/main/main_screen.dart';
 import 'package:dashboardtemplate/screens/main/widgets/drawer_list_tile/drawer_list_tile.dart';
+import 'package:dashboardtemplate/screens/profil/profil_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../../buku_anak/buku_screen.dart';
+import '../../../dashboard/dashboard.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({
@@ -16,48 +26,83 @@ class SideMenu extends StatelessWidget {
             DrawerHeader(
               child: Image.asset(AppImages.logo),
             ),
+            // DrawerListTile(
+            //   title: "Home",
+            //   icon: AppIcons.menuDashboard,
+            //   onTap: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(
+            //         builder: (context) => DashboardScreen(),
+            //       ),
+            //     );
+            //   },
+            // ),
             DrawerListTile(
-              title: "Dashboard",
-              icon: AppIcons.menuDashboard,
-              onTap: () {},
-            ),
-            DrawerListTile(
-              title: "Transaction",
-              icon: AppIcons.menuTran,
+              title: "Profil Anak",
+              icon: AppIcons.menuProfile,
               onTap: () {
-                print("something");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProfilAnak(),
+                  ),
+                );
               },
             ),
             DrawerListTile(
-              title: "Task",
-              icon: AppIcons.menuTask,
-              onTap: () {},
-            ),
-            DrawerListTile(
-              title: "Documents",
+              title: "Buku Anak",
               icon: AppIcons.menuDoc,
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BukuScreen(),
+                  ),
+                );
+              },
             ),
             DrawerListTile(
-              title: "Store",
-              icon: AppIcons.menuStore,
-              onTap: () {},
+              title: "Artikel",
+              icon: AppIcons.menuTran,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ArticleScreen(),
+                  ),
+                );
+              },
             ),
             DrawerListTile(
-              title: "Notification",
+              title: "Konsultasi",
               icon: AppIcons.menuNotification,
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => KonsultasiScreen(),
+                  ),
+                );
+              },
             ),
-            DrawerListTile(
-              title: "Profile",
-              icon: AppIcons.menuProfile,
-              onTap: () {},
-            ),
-            DrawerListTile(
-              title: "Settings",
-              icon: AppIcons.menuSetting,
-              onTap: () {},
-            ),
+            // DrawerListTile(
+            //   title: "Task",
+            //   icon: AppIcons.menuTask,
+            //   onTap: () {},
+            // ),
+
+            // DrawerListTile(
+            //   title: "Store",
+            //   icon: AppIcons.menuStore,
+            //   onTap: () {},
+            // ),
+
+            // DrawerListTile(
+            //   title: "Settings",
+            //   icon: AppIcons.menuSetting,
+            //   onTap: () {},
+            // ),
           ],
         ),
       ),

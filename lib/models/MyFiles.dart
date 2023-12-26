@@ -1,52 +1,38 @@
 import 'package:dashboardtemplate/core/app_colors.dart';
 import 'package:flutter/material.dart';
 
-class CloudStorageInfo {
-  final String svgSrc, title, totalStorage;
-  final int numOfFiels, percentage;
-  final Color color;
+class InfoAnakDash {
+  final String title;
+  final int? beratBadan;
+  final int? tinggiBadan;
+  final int? lingkarKpl;
+  final int? lingkarLgn;
 
-  CloudStorageInfo({
-    required this.svgSrc,
+  InfoAnakDash({
     required this.title,
-    required this.totalStorage,
-    required this.numOfFiels,
-    required this.percentage,
-    required this.color,
+    this.beratBadan,
+    this.tinggiBadan,
+    this.lingkarKpl,
+    this.lingkarLgn,
   });
 }
 
-List<CloudStorageInfo> demoMyFiles = [
-  CloudStorageInfo(
-    title: "Documents",
-    numOfFiels: 1328,
-    svgSrc: "assets/icons/Documents.svg",
-    totalStorage: "1.9GB",
-    color: AppColors.primaryColor,
-    percentage: 35,
+// Contoh penggunaan:
+List<InfoAnakDash> demoMyInfo = [
+  InfoAnakDash(
+    title: "Berat Badan (kg)",
+    beratBadan: 13,
   ),
-  CloudStorageInfo(
-    title: "Google Drive",
-    numOfFiels: 1328,
-    svgSrc: "assets/icons/google_drive.svg",
-    totalStorage: "2.9GB",
-    color: Color(0xFFFFA113),
-    percentage: 35,
+  InfoAnakDash(
+    title: "Tinggi Badan (cm)",
+    tinggiBadan: 30,
   ),
-  CloudStorageInfo(
-    title: "One Drive",
-    numOfFiels: 1328,
-    svgSrc: "assets/icons/one_drive.svg",
-    totalStorage: "1GB",
-    color: Color(0xFFA4CDFF),
-    percentage: 10,
+  InfoAnakDash(
+    title: "Lingkar Kepala (cm)",
+    lingkarKpl: 50,
   ),
-  CloudStorageInfo(
-    title: "Documents",
-    numOfFiels: 5328,
-    svgSrc: "assets/icons/drop_box.svg",
-    totalStorage: "7.3GB",
-    color: Color(0xFF007EE5),
-    percentage: 78,
+  InfoAnakDash(
+    title: "Lingkar Lengan Atas (cm)",
+    lingkarLgn: 10,
   ),
 ];
