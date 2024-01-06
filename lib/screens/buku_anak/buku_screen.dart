@@ -1,5 +1,13 @@
+import 'package:dashboardtemplate/screens/buku_anak/12bulan_screen.dart';
+import 'package:dashboardtemplate/screens/buku_anak/18bulan_screen.dart';
+import 'package:dashboardtemplate/screens/buku_anak/24bulan_screen.dart';
+import 'package:dashboardtemplate/screens/buku_anak/2tahun_screen.dart';
 import 'package:dashboardtemplate/screens/buku_anak/3bulan_screen.dart';
+import 'package:dashboardtemplate/screens/buku_anak/3tahun_screen.dart';
+import 'package:dashboardtemplate/screens/buku_anak/4tahun_screen.dart';
+import 'package:dashboardtemplate/screens/buku_anak/5tahun_screen.dart';
 import 'package:dashboardtemplate/screens/buku_anak/6bulan_screen.dart';
+import 'package:dashboardtemplate/screens/buku_anak/9bulan_screen.dart';
 import 'package:dashboardtemplate/screens/dashboard/widgets/header/header.dart';
 import 'package:dashboardtemplate/screens/dashboard/widgets/search_field/search_field.dart';
 import 'package:flutter/material.dart';
@@ -62,11 +70,73 @@ class _BukuScreenState extends State<BukuScreen> {
             items: [
               DropdownMenuItem<String>(
                 value: "Usia 29 Hari - 3 Bulan",
-                child: Text("Usia 29 Hari - 3 Bulan"),
+                child: Text(
+                  "Usia 29 Hari - 3 Bulan",
+                  style: TextStyle(color: Colors.black),
+                ),
               ),
               DropdownMenuItem<String>(
                 value: "Usia 3 - 6 Bulan",
-                child: Text("Usia 3 - 6 Bulan"),
+                child: Text(
+                  "Usia 3 - 6 Bulan",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+              DropdownMenuItem<String>(
+                value: "Usia 6 - 9 Bulan",
+                child: Text(
+                  "Usia 6 - 9 Bulan",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+              DropdownMenuItem<String>(
+                value: "Usia 9 - 12 Bulan",
+                child: Text(
+                  "Usia 9 - 12 Bulan",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+              DropdownMenuItem<String>(
+                value: "Usia 12 - 18 Bulan",
+                child: Text(
+                  "Usia 12 - 18 Bulan",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+              DropdownMenuItem<String>(
+                value: "Usia 18 - 24 Bulan",
+                child: Text(
+                  "Usia 18 - 24 Bulan",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+              DropdownMenuItem<String>(
+                value: "Usia 2 - 3 Tahun",
+                child: Text(
+                  "Usia 2 - 3 Tahun",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+              DropdownMenuItem<String>(
+                value: "Usia 3 - 4 Tahun",
+                child: Text(
+                  "Usia 3 - 4 Tahun",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+              DropdownMenuItem<String>(
+                value: "Usia 4 - 5 Tahun",
+                child: Text(
+                  "Usia 4 - 5 Tahun",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+              DropdownMenuItem<String>(
+                value: "Usia 5 - 6 Tahun",
+                child: Text(
+                  "Usia 5 - 6 Tahun",
+                  style: TextStyle(color: Colors.black),
+                ),
               ),
             ],
             onChanged: (String? newValue) {
@@ -93,8 +163,68 @@ class _BukuScreenState extends State<BukuScreen> {
                     builder: (context) => maksEnamBuku(),
                   ),
                 );
+              } else if (selectedAge == "Usia 6 - 9 Bulan") {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => enamkeSembilanBuku(),
+                  ),
+                );
+              } else if (selectedAge == "Usia 9 - 12 Bulan") {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => sembilankeDuablsBuku(),
+                  ),
+                );
+              } else if (selectedAge == "Usia 12 - 18 Bulan") {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => delapanBelasBuku(),
+                  ),
+                );
+              } else if (selectedAge == "Usia 18 - 24 Bulan") {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => duaempatBuku(),
+                  ),
+                );
+              } else if (selectedAge == "Usia 2 - 3 Tahun") {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => duatahunBuku(),
+                  ),
+                );
+              } else if (selectedAge == "Usia 3 - 4 Tahun") {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => tigaTahunBuku(),
+                  ),
+                );
+              } else if (selectedAge == "Usia 4 - 5 Tahun") {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => empatTahunBuku(),
+                  ),
+                );
+              } else if (selectedAge == "Usia 5 - 6 Tahun") {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => enamTahunBuku(),
+                  ),
+                );
               }
             },
+            style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromARGB(
+                    255, 255, 184, 30) // Warna latar belakang tombol
+                ),
             child: Text("Pilih"),
           ),
           // Add other widgets as needed
@@ -103,10 +233,4 @@ class _BukuScreenState extends State<BukuScreen> {
       ),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: BukuScreen(),
-  ));
 }

@@ -1,35 +1,39 @@
 import 'package:flutter/material.dart';
 
-class maksTigaBlnBuku extends StatefulWidget {
+class duaempatBuku extends StatefulWidget {
   @override
-  _maksTigaBlnBukuState createState() => _maksTigaBlnBukuState();
+  _duaempatBukuState createState() => _duaempatBukuState();
 }
 
-class _maksTigaBlnBukuState extends State<maksTigaBlnBuku> {
+class _duaempatBukuState extends State<duaempatBuku> {
   List<Map<String, dynamic>> questions = [
     {
       'number': 1,
-      'question': 'Bayi bisa mengangkat kepala mandiri hingga setinggi 45°?'
+      'question': 'Anak bisa berdiri sendiri tanpa berpegangan 30 detik?'
     },
-    {
-      'number': 2,
-      'question': 'Bayi bisa menggerakkan kepala dari kiri/kanan ke tengah?'
-    },
-    {'number': 3, 'question': 'Bayi bisa melihat dan menatap wajah anda?'},
+    {'number': 2, 'question': 'Anak bisa berjalan tanpa terhuyung-huyung?'},
+    {'number': 3, 'question': 'Anak bisa menumpuk 4 buah kubus?'},
     {
       'number': 4,
-      'question': 'Bayi bisa mengoceh spontan atau bereaksi dengan mengoceh?'
+      'question':
+          'Anak bisa memungut benda kecil dengan ibu jari dan jari telunjuk?'
     },
-    {'number': 5, 'question': 'Bayi suka tertawa keras?'},
-    {'number': 6, 'question': 'Bayi bereaksi terkejut terhadap suara keras?'},
+    {
+      'number': 5,
+      'question': 'Anak bisa menggelindingkan bola ke arah sasaran?'
+    },
+    {
+      'number': 6,
+      'question': 'Anak bisa menyebut 3 – 6 kata yang mempunyai arti?'
+    },
     {
       'number': 7,
-      'question': 'Bayi membalas tersenyum ketika diajak bicara/ tersenyum?'
+      'question': 'Anak bisa membantu/menirukan pekerjaan rumah tanggal?'
     },
     {
       'number': 8,
       'question':
-          'Bayi mengenal ibu dengan penglihatan, penciuman, pendengaran, kontak?'
+          'Anak bisa memegang cangkir sendiri, belajar makan-minum sendiri?'
     },
   ];
   List<bool?> selectedValues = List.generate(8, (index) => null);
@@ -153,7 +157,7 @@ class _maksTigaBlnBukuState extends State<maksTigaBlnBuku> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Usia 29 Hari - 3 Bulan'),
+        title: Text('Usia 18 - 24 Bulan'),
         backgroundColor: Color(0xFFE29910),
         centerTitle: true,
       ),

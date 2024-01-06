@@ -53,35 +53,49 @@ class maksEnamBukuState extends State<maksEnamBuku> {
           (states) {
             // Use different colors for even and odd rows
             return i % 2 == 0
-                ? Color.fromARGB(255, 255, 220, 167) ?? Colors.transparent
-                : Color.fromARGB(255, 255, 250, 236) ?? Colors.transparent;
+                ? Color.fromARGB(255, 255, 205, 130) ?? Colors.transparent
+                : Color.fromARGB(255, 255, 250, 237) ?? Colors.transparent;
           },
         ),
         cells: [
           DataCell(
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 8),
-              constraints: BoxConstraints(
-                maxWidth: double
-                    .infinity, // Allow the container to expand horizontally
-                minHeight: 60.0, // Set the minimum height
+            SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 8),
+                constraints: BoxConstraints(
+                  maxWidth: double.infinity,
+                  minHeight: 60.0,
+                ),
+                child: Text(
+                  questions[i]['number'].toString(),
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
               ),
-              child: Text(questions[i]['number'].toString()),
             ),
           ),
           DataCell(
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 5),
-              width: 245, // Adjust the width as needed
-              constraints: BoxConstraints(
-                maxWidth: double
-                    .infinity, // Allow the container to expand horizontally
-                minHeight: 60.0, // Set the minimum height
-              ),
-              child: Wrap(
-                children: [
-                  Text(questions[i]['question']),
-                ],
+            SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 5),
+                width: 245,
+                constraints: BoxConstraints(
+                  maxWidth: double.infinity,
+                  minHeight: 60.0,
+                ),
+                child: Wrap(
+                  children: [
+                    Text(
+                      questions[i]['question'],
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -102,6 +116,14 @@ class maksEnamBukuState extends State<maksEnamBuku> {
                     selectedValues[i] = value as bool?;
                   });
                 },
+                fillColor:
+                    MaterialStateColor.resolveWith((Set<MaterialState> states) {
+                  if (states.contains(MaterialState.selected)) {
+                    return Colors.black; // Warna ketika dicentang
+                  } else {
+                    return Colors.black; // Warna ketika tidak dicentang
+                  }
+                }),
               ),
             ),
           ), // Jawaban Ya
@@ -122,6 +144,14 @@ class maksEnamBukuState extends State<maksEnamBuku> {
                     selectedValues[i] = value as bool?;
                   });
                 },
+                fillColor:
+                    MaterialStateColor.resolveWith((Set<MaterialState> states) {
+                  if (states.contains(MaterialState.selected)) {
+                    return Colors.black; // Warna ketika dicentang
+                  } else {
+                    return Colors.black; // Warna ketika tidak dicentang
+                  }
+                }),
               ),
             ),
           ), // Jawaban Tidak
@@ -135,15 +165,9 @@ class maksEnamBukuState extends State<maksEnamBuku> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pemantauan Bayi Usia 3 - 6 Bulan'),
+        title: Text('Usia 3 - 6 Bulan'),
         backgroundColor: Color(0xFFE29910),
         centerTitle: true,
-        // leading: IconButton(
-        //   icon: Icon(Icons.arrow_back),
-        //   onPressed: () {
-        //     Navigator.of(context).pop();
-        //   },
-        // ),
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -157,10 +181,16 @@ class maksEnamBukuState extends State<maksEnamBuku> {
                 horizontalMargin: 10,
                 columnSpacing: constraints.maxWidth / 20, // Adjust as needed
                 columns: [
-                  DataColumn(label: Text('No')),
-                  DataColumn(label: Text('Pertanyaan')),
-                  DataColumn(label: Text('Ya')),
-                  DataColumn(label: Text('Tidak')),
+                  DataColumn(
+                      label: Text('No', style: TextStyle(color: Colors.black))),
+                  DataColumn(
+                      label: Text('Pertanyaan',
+                          style: TextStyle(color: Colors.black))),
+                  DataColumn(
+                      label: Text('Ya', style: TextStyle(color: Colors.black))),
+                  DataColumn(
+                      label:
+                          Text('Tidak', style: TextStyle(color: Colors.black))),
                 ],
                 rows: _buildRows(),
               ),
@@ -168,12 +198,19 @@ class maksEnamBukuState extends State<maksEnamBuku> {
           },
         ),
       ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ElevatedButton(
+          onPressed: () {
+            // Handle submit button click
+          },
+          style: ElevatedButton.styleFrom(
+            primary:
+                const Color.fromARGB(255, 255, 180, 66), // Set warna oranye
+          ),
+          child: Text("Submit"),
+        ),
+      ),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: maksEnamBuku(),
-  ));
 }

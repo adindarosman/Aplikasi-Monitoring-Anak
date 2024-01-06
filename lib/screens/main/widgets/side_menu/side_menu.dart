@@ -5,6 +5,7 @@ import 'package:dashboardtemplate/screens/buku_anak/3bulan_screen.dart';
 import 'package:dashboardtemplate/screens/konsultasi/konsultasi_screen.dart';
 import 'package:dashboardtemplate/screens/main/main_screen.dart';
 import 'package:dashboardtemplate/screens/main/widgets/drawer_list_tile/drawer_list_tile.dart';
+import 'package:dashboardtemplate/screens/profil/editprofil_screen.dart';
 import 'package:dashboardtemplate/screens/profil/profil_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

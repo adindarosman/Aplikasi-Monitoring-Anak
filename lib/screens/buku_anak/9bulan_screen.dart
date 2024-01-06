@@ -1,38 +1,46 @@
 import 'package:flutter/material.dart';
 
-class maksTigaBlnBuku extends StatefulWidget {
+class enamkeSembilanBuku extends StatefulWidget {
   @override
-  _maksTigaBlnBukuState createState() => _maksTigaBlnBukuState();
+  _enamkeSembilanBukuState createState() => _enamkeSembilanBukuState();
 }
 
-class _maksTigaBlnBukuState extends State<maksTigaBlnBuku> {
+class _enamkeSembilanBukuState extends State<enamkeSembilanBuku> {
   List<Map<String, dynamic>> questions = [
-    {
-      'number': 1,
-      'question': 'Bayi bisa mengangkat kepala mandiri hingga setinggi 45°?'
-    },
+    {'number': 1, 'question': 'Bayi bisa duduk secara mandiri?'},
     {
       'number': 2,
-      'question': 'Bayi bisa menggerakkan kepala dari kiri/kanan ke tengah?'
+      'question':
+          'Bayi belajar berdiri, kedua kakinya menyangga sebagian berat badan?'
     },
-    {'number': 3, 'question': 'Bayi bisa melihat dan menatap wajah anda?'},
+    {
+      'number': 3,
+      'question': 'Bayi bisa merangkak meraih mainan atau mendekati seseorang?'
+    },
     {
       'number': 4,
-      'question': 'Bayi bisa mengoceh spontan atau bereaksi dengan mengoceh?'
+      'question':
+          'Bayi bisa memindahkan benda dari satu tangan ke tangan lainnya?'
     },
-    {'number': 5, 'question': 'Bayi suka tertawa keras?'},
-    {'number': 6, 'question': 'Bayi bereaksi terkejut terhadap suara keras?'},
+    {
+      'number': 5,
+      'question':
+          'Bayi bisa memungut 2 benda, kedua tangan pegang 2 benda pada saat bersamaan?'
+    },
+    {
+      'number': 6,
+      'question': 'Bayi bisa memungut benda sebesar kacang dengan cara meraup?'
+    },
     {
       'number': 7,
-      'question': 'Bayi membalas tersenyum ketika diajak bicara/ tersenyum?'
+      'question': 'Bayi bersuara tanpa arti, mamama, bababa, dadada, tatatata?'
     },
-    {
-      'number': 8,
-      'question':
-          'Bayi mengenal ibu dengan penglihatan, penciuman, pendengaran, kontak?'
-    },
+    {'number': 8, 'question': 'Bayi mencari mainan/benda yang dijatuhkan?'},
+    {'number': 9, 'question': 'Bayi bermain tepuk tangan/ciluk ba'},
+    {'number': 10, 'question': 'Bayi bergembira dengan melempar benda?'},
+    {'number': 11, 'question': 'Bayi makan kue sendiri?'},
   ];
-  List<bool?> selectedValues = List.generate(8, (index) => null);
+  List<bool?> selectedValues = List.generate(11, (index) => null);
   List<DataRow> _buildRows() {
     List<DataRow> rows = [];
     for (int i = 0; i < questions.length; i++) {
@@ -153,7 +161,7 @@ class _maksTigaBlnBukuState extends State<maksTigaBlnBuku> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Usia 29 Hari - 3 Bulan'),
+        title: Text('Usia 6 - 9 Bulan'),
         backgroundColor: Color(0xFFE29910),
         centerTitle: true,
       ),

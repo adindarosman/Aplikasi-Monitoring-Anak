@@ -1,8 +1,8 @@
 import 'package:dashboardtemplate/controllers/MenuController.dart';
 import 'package:dashboardtemplate/core/core.dart';
 import 'package:dashboardtemplate/screens/dashboard/widgets/search_field/search_field.dart';
+import 'package:dashboardtemplate/screens/profil/editprofil_screen.dart';
 import 'package:dashboardtemplate/screens/profil/profil_screen.dart';
-import 'package:dashboardtemplate/screens/profil/profil_screen.dart'; // Sesuaikan dengan nama file halaman profil Anda
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
