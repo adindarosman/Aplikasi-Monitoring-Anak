@@ -44,6 +44,8 @@ class _EditProfilAnakState extends State<EditProfilAnak> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Edit Profil Anak'),
+        // automaticallyImplyLeading: false,
+        // leading: null,
         backgroundColor: Color(0xFFE29910),
         centerTitle: true,
       ),
@@ -540,7 +542,7 @@ class _EditProfilAnakState extends State<EditProfilAnak> {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                         builder: (context) => ProfilAnak(

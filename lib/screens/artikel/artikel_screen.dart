@@ -1,5 +1,9 @@
 import 'dart:convert';
 
+import 'package:dashboardtemplate/core/app_colors.dart';
+import 'package:dashboardtemplate/core/app_widget.dart';
+import 'package:dashboardtemplate/screens/buku_anak/buku_screen.dart';
+import 'package:dashboardtemplate/screens/konsultasi/konsultasi_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' as htmlParser;
@@ -176,25 +180,20 @@ class _ArticleScreenState extends State<ArticleScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Artikel'),
-        backgroundColor: Color(0xFFE29910),
-        centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
+        appBar: AppBar(
+          title: Text('Artikel'),
+          backgroundColor: Color(0xFFE29910),
+          centerTitle: true,
+          // leading: null,
+          // automaticallyImplyLeading: false,
         ),
-      ),
-      body: selectedIndex == -1
-          ? (articles.isEmpty
-              ? Center(child: CircularProgressIndicator())
-              : ListView.builder(
-                  itemCount: articles.length,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
+        body: selectedIndex == -1
+            ? (articles.isEmpty
+                ? Center(child: CircularProgressIndicator())
+                : ListView.builder(
+                    itemCount: articles.length,
+                    itemBuilder: (context, index) {
+                      return Column(children: [
                         ListTile(
                           title: Text(
                             articles[index].title,
@@ -220,70 +219,158 @@ class _ArticleScreenState extends State<ArticleScreen> {
                           thickness: 2,
                           color: Colors.grey,
                         ),
-                      ],
-                    );
-                  },
-                ))
-          : Column(
-              children: [
-                Expanded(
-                  child: Stack(
-                    children: [
-                      WebView(
-                        initialUrl: 'about:blank',
-                        javascriptMode: JavascriptMode.unrestricted,
-                        onPageStarted: (String url) {
-                          // Tambahkan delay buatan untuk menguji loading indicator
-                          Future.delayed(Duration(milliseconds: 500), () {
-                            setState(() {
-                              isLoading = true;
-                            });
-                          });
-                        },
-                        onPageFinished: (String url) {
-                          setState(() {
-                            isLoading = false;
-                          });
-                        },
-                        onWebViewCreated:
-                            (WebViewController webViewController) {
-                          // Load HTML content into WebView
-                          webViewController.loadUrl(Uri.dataFromString(
-                                  _wrapHtml(articles[selectedIndex].content),
-                                  mimeType: 'text/html',
-                                  encoding: Encoding.getByName('utf-8'))
-                              .toString());
-                        },
-                      ),
-                      if (isLoading)
-                        Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                      Positioned(
-                        bottom: 16.0,
-                        left: 0,
-                        right: 0,
-                        child: Center(
-                          child: ElevatedButton(
-                            onPressed: () {
+                      ]);
+                    },
+                  ))
+            : Column(
+                children: [
+                  Expanded(
+                    child: Stack(
+                      children: [
+                        WebView(
+                          initialUrl: 'about:blank',
+                          javascriptMode: JavascriptMode.unrestricted,
+                          onPageStarted: (String url) {
+                            // Tambahkan delay buatan untuk menguji loading indicator
+                            Future.delayed(Duration(milliseconds: 500), () {
                               setState(() {
-                                selectedIndex = -1;
+                                isLoading = true;
                               });
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Color.fromARGB(255, 127, 76,
-                                  0), // Set the background color to orange
+                            });
+                          },
+                          onPageFinished: (String url) {
+                            setState(() {
+                              isLoading = false;
+                            });
+                          },
+                          onWebViewCreated:
+                              (WebViewController webViewController) {
+                            // Load HTML content into WebView
+                            webViewController.loadUrl(Uri.dataFromString(
+                                    _wrapHtml(articles[selectedIndex].content),
+                                    mimeType: 'text/html',
+                                    encoding: Encoding.getByName('utf-8'))
+                                .toString());
+                          },
+                        ),
+                        if (isLoading)
+                          Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        Positioned(
+                          bottom: 16.0,
+                          left: 0,
+                          right: 0,
+                          child: Center(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ArticleScreen()),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Color.fromARGB(255, 127, 76,
+                                    0), // Set the background color to orange
+                              ),
+                              child: Text('Kembali Ke Artikel List'),
                             ),
-                            child: Text('Kembali Ke Artikel List'),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
+                ],
+              ),
+        //bottom navigator bar
+        bottomNavigationBar: Container(
+          height: 70, // Sesuaikan dengan tinggi yang diinginkan
+          color: AppColors
+              .secondaryColor, // Sesuaikan dengan warna latar belakang yang diinginkan
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.home_outlined),
+                      color: Colors.white,
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => AppWidget()),
+                        );
+                      },
+                    ),
+                    Text(
+                      'Home',
+                      style: TextStyle(color: Colors.white, fontSize: 11),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.book_outlined),
+                      color: Colors.white,
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => BukuScreen()),
+                        );
+                      },
+                    ),
+                    Text(
+                      'Pemantauan Anak',
+                      style: TextStyle(color: Colors.white, fontSize: 11),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.article),
+                      color: Colors.white,
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ArticleScreen()),
+                        );
+                      },
+                    ),
+                    Text(
+                      'Artikel',
+                      style: TextStyle(color: Colors.white, fontSize: 11),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.chat_bubble_outline),
+                      color: Colors.white,
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => KonsultasiScreen()),
+                        );
+                      },
+                    ),
+                    Text(
+                      'Konsultasi',
+                      style: TextStyle(color: Colors.white, fontSize: 11),
+                    ),
+                  ],
                 ),
               ],
             ),
-    );
+          ),
+        ));
   }
 
   String _wrapHtml(String content) {

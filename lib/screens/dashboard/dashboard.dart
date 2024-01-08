@@ -1,3 +1,4 @@
+import 'package:dashboardtemplate/core/app_widget.dart';
 import 'package:dashboardtemplate/screens/buku_anak/6bulan_screen.dart';
 import 'package:dashboardtemplate/screens/dashboard/widgets/header/header.dart';
 import 'package:dashboardtemplate/screens/dashboard/widgets/my_files/my_files.dart';
@@ -49,4 +50,8 @@ class DashboardScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+void main() {
+  runApp(AppWidget());
 }

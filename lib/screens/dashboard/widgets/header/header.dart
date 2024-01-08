@@ -15,13 +15,6 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        IconButton(
-          icon: Icon(Icons.menu),
-          onPressed: () {
-            Provider.of<CustomMenuController>(context, listen: false)
-                .controlMenu();
-          },
-        ),
         Expanded(
           child: AgeField(
             userName: "Nathan Beska",
@@ -45,7 +38,7 @@ class ProfileCard extends StatelessWidget {
     return InkWell(
       onTap: () {
         // Navigasi ke halaman profil ketika container diklik
-        Navigator.of(context).push(
+        Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (context) =>
                 ProfilAnak(), // Gantilah dengan halaman profil Anda
